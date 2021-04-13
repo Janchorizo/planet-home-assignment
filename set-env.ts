@@ -10,6 +10,7 @@
  * Currently used environment variables:
  * - PLANET_API_ENDPOINT
  * - PLANET_API_TOKEN
+ * - PRODUCTION
  */
 import { writeFile } from 'fs';
 
@@ -18,6 +19,7 @@ const environmentFilePath = './src/environments/environment.ts';
 const envVariablesMapping = {
     api_endpoint: 'PLANET_API_ENDPOINT',
     api_token: 'PLANET_API_TOKEN',
+    production: 'PRODUCTION'
 };
 
 // 1. Missing environment variables check
@@ -30,12 +32,35 @@ Object.values(envVariablesMapping).forEach((key: string) => {
 });
 
 // 2. Environment file contents creation
+/**
+ * Converts the string representation to the correct type.
+ * Add new conditions to expand the supported formats.
+ * @param s The string representation of the environment variable
+ * @return [any] The environment variable in the original type
+ */
+function toType(s: string | null): any{
+    // each condition returns a type and whether it was set or not
+    const conditions = [
+        (d: any) => d == 'true' ? [true, true] : [d, false],
+        (d: any) => d == 'false' ? [false, true] : [d, false],
+        (d: any) => +d !== NaN ? [d, true] : [d, false],
+        (d: any) => d === null ? [d, true] : [d, false],
+        (d: any) => d !== null ? [d, true] : [d, false],
+    ]
+
+    const [value, set] = conditions.reduce(
+        ([value, set], condition) => set === true ? [value, true] : condition(value), [s, false]
+    );
+
+    return value;
+}
+
 const envVariables = Object.entries(envVariablesMapping)
-    .map(([name, key]) => [name, envVariableOrNull(key)])
+    .map(([name, key]) => [name, toType(envVariableOrNull(key))])
     .reduce((ac: object, [name, value]) => ({...ac, [name]: value}),{});
 
 const enfFileEntries = Object.entries(envVariables)
-    .map(([key, value]) => `${key}: ${value === null ? 'null' : ("'"+value+"'")}`)
+    .map(([key, value]) => `${key}: ${JSON.stringify(value)}`)
     .join(',\n\t');
 
 const envFileContents = 'export const environment = {\n\t' + enfFileEntries + '\n};';
