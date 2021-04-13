@@ -2,6 +2,18 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.8.
 
+## App configuration
+
+Run `npm run config` to setup the environment variables. They will be taken from the
+current shell.
+
+_If an environment variable is missing, it will be logged._
+
+Currently required environment variables are:
+- PLANET_API_ENDPOINT
+- PLANET_API_TOKEN
+- PRODUCTION
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
