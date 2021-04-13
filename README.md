@@ -1,5 +1,9 @@
 # PlanetHomeAssignment
 
+[![Unit tests](https://github.com/Janchorizo/planet-home-assignment/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/Janchorizo/planet-home-assignment/actions/workflows/unit-tests.yml)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/831eb7fb-cc3e-4181-9eb8-0d0a07a03094/deploy-status)](https://app.netlify.com/sites/planet-home-assignment/deploys)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.8.
 
 ## Development server
