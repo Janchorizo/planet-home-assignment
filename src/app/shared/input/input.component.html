@@ -1,0 +1,4 @@
+<div class="input">
+    <label *ngIf='label'>{{label}}</label>
+    <input type={{type}} [ngModel]='value' (ngModelChange)='handleChange($event)'/>
+</div>
