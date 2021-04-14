@@ -2,7 +2,8 @@
 
 .button{
     @include styles.rounded;
-    padding: styles.$space-small - 2px styles.$space-large + 4px;
+    height: styles.$space-large;
+    padding: 0 styles.$space-medium + 4px;
     font-size: styles.$space-medium;
     font-weight: 600;
 
