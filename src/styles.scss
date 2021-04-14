@@ -1,1 +1,64 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face{
+    font-family: "oxygen";
+    src: url("/assets/fonts/Oxygen/Oxygen-Light.ttf");
+    font-weight: 100;
+    font-style: normal;
+}
+@font-face{
+    font-family: "oxygen";
+    src: url("/assets/fonts/Oxygen/Oxygen-Regular.ttf");
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face{
+    font-family: "oxygen";
+    src: url("/assets/fonts/Oxygen/Oxygen-Bold.ttf");
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face{
+    font-family: "kiwi";
+    src: url("/assets/fonts/Kiwi_Maru/KiwiMaru-Light.ttf");
+    font-weight: 100;
+    font-style: normal;
+}
+@font-face{
+    font-family: "kiwi";
+    src: url("/assets/fonts/Kiwi_Maru/KiwiMaru-Regular.ttf");
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face{
+    font-family: "kiwi";
+    src: url("/assets/fonts/Kiwi_Maru/KiwiMaru-Medium.ttf");
+    font-weight: 600;
+    font-style: normal;
+}
+
+$main: #5545ba;
+$main-light: #9289c8;
+$white: white;
+$light: #e5e5e5;
+$darker: #C4C4C4;
+$dark: #2A2B35;
+$space-small: 10px;
+$space-medium: 15px;
+$space-large: 30px;
+$space-xlarge: 50px;
+$text-small: 12px;
+$text-regular: 15px;
+$text-large: 20px;
+$text-extra-large: 28px;
+$text-sans-serif: oxygen, helvetica, sans-serif;
+$text-serif: kiwi, arial, serif;
+
+@mixin rounded {
+    border-radius: 10px;
+}
+
+body{
+    margin: 0;
+}
+*{
+    font-family: $text-sans-serif;
+}

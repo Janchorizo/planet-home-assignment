@@ -7,4 +7,23 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'planet-home-assignment';
+  name = '';
+  focused = false;
+  transitioned = false;
+
+  onCLick() {
+      this.transitioned = !this.transitioned;
+  }
+
+  handleMouseEnter(){
+      this.focused = true;
+  }
+
+  handleMouseExit(){
+    this.focused = false;
+}
+
+  handleNameChange(newName: string){
+      this.name = newName;
+  }
 }

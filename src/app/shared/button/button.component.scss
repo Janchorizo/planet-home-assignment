@@ -1,0 +1,18 @@
+@use '../../../styles.scss';
+
+.button{
+    @include styles.rounded;
+    height: styles.$space-large;
+    padding: 0 styles.$space-medium + 4px;
+    font-size: styles.$space-medium;
+    font-weight: 600;
+
+    background-color: styles.$main-light;
+    color: styles.$white;
+    border: none;
+    cursor: pointer;
+
+    &:hover{
+        color: styles.$light;
+    }
+}

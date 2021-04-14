@@ -1,0 +1,68 @@
+@use '../../../styles.scss';
+.pageContainer{
+  position: relative;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  .content{
+    z-index: 10;
+    display: block;
+    padding: 10px;
+    width: calc(100% - 80px - 20px);
+    height: calc(100% - 80px - 20px);
+    @include styles.rounded;
+  }
+
+  .overlay{
+    z-index: 0;
+    position: absolute;
+  }
+
+  &.side .overlay{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    clip-path: polygon(0% 0%, 200px 0%, 200px 100%, 0% 100%);
+    transition: clip-path cubic-bezier(0.6, -0.28, 0.74, 0.05) .4s;
+  }
+
+  &.corner .overlay{
+    top: 0;
+    right: 0;
+    width: 150%;
+    height: 150%;
+    display: block;
+    clip-path: circle(0% at 100% 0%);
+    transition: clip-path ease-in-out .5s;
+  }
+}
+
+.pageContainer.focused{
+    transition: background-color step-end .5s;
+    
+    &.corner .overlay{
+      clip-path: circle(20% at 100% 0%);
+    }
+
+    &.side .overlay{
+        clip-path: polygon(0% 0%, 300px 0%, 300px 100%, 0% 100%);
+    }
+}
+
+.pageContainer.transitioned{
+    transition: background-color step-end .5s;
+    
+    &.corner .overlay{
+        clip-path: circle(100% at 100% 0%);
+    }
+
+    &.side .overlay{
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+}
