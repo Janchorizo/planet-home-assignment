@@ -1,0 +1,11 @@
+@use '../../../styles.scss';
+
+.container{
+    display: block;
+    margin: styles.$space-small;
+    padding: styles.$space-small;
+
+    &.container-rounded{
+        @include styles.rounded;
+    }
+}
