@@ -1,0 +1,6 @@
+<div [ngClass]="{'undoable-input': true, 'edited': this.edited}">
+    <label *ngIf='label'>{{label}}</label>
+    <input type={{type}} [ngModel]='value' (ngModelChange)='handleChange($event)'/>
+    <button (click)='handleSaveClick()'>Save</button>
+    <button (click)='handleUndoClick()'>Undo</button>
+</div>

@@ -3,17 +3,20 @@ import { CommonModule } from '@angular/common';
 import { ButtonComponent } from './button/button.component';
 import { InputComponent } from './input/input.component';
 import { FormsModule } from '@angular/forms';
+import { UndoableInputComponent } from './undoable-input/undoable-input.component';
 
 
 
 @NgModule({
   declarations: [
     ButtonComponent,
-    InputComponent
+    InputComponent,
+    UndoableInputComponent
   ],
   exports: [
       ButtonComponent,
-      InputComponent
+      InputComponent,
+      UndoableInputComponent
   ],
   imports: [
     FormsModule,

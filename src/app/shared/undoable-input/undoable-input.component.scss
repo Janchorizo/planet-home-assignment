@@ -1,0 +1,61 @@
+@use '../../../styles.scss';
+
+.undoable-input{
+    position: relative;
+    display: inline-block;
+    margin: styles.$space-small 0;
+
+    label{
+        display: block;
+        padding-left: styles.$space-medium;
+        margin-bottom: styles.$space-small / 3;
+        color: styles.$main;
+    }
+    input{
+        display: block;
+        @include styles.rounded;
+        height: styles.$space-large;
+        padding: 0 styles.$space-medium;
+        font-size: styles.$space-medium;
+        border: none;
+        background-color: styles.$light;
+        color: styles.$dark;
+
+        &:focus{
+            outline: none;
+            box-sizing: border-box;
+            border: solid 1.5px styles.$main;
+        }
+    }
+    button{
+        display: none;
+        position: absolute;
+        bottom: - styles.$space-small - 5px;
+        @include styles.rounded;
+        border: solid 1px styles.$main;
+        color: styles.$main;
+        background: styles.$light;
+        right: 4em;
+        cursor: pointer;
+
+        &:focus{
+            outline: none;
+        }
+
+        &:hover{
+            border-color: styles.$darker;
+            background-color: #cfffe5;
+        }
+
+        &:nth-of-type(2):hover{
+            background-color: #ffcfcf;
+        }
+
+        &:nth-of-type(2){
+            right: 0;
+        }
+    }
+    &.edited button{
+        display: initial;
+    }
+}
