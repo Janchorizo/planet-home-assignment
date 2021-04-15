@@ -1,0 +1,22 @@
+@use '../../../styles.scss';
+
+#top-navigation{
+    position: absolute;
+    top: 5px;
+    right: 40px;
+
+    &:hover span{
+        color: styles.$darker;
+    }
+
+    span{
+        color: white;
+        cursor: pointer;
+        margin-left: 10px;
+        transition: color ease-in .2s;
+
+        &:hover{
+            color: styles.$main;
+        }
+    }
+}
