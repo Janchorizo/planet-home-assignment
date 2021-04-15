@@ -32,6 +32,8 @@ export class PageContainerComponent implements OnInit, OnChanges {
   cssClasses: string;
 
   ngOnInit(): void {
+    this.transitioned = this.transitioned === undefined ? false : this.transitioned;
+    this.focused = this.focused === undefined ? false : this.focused;
     this.bgColor = this.bgColor === undefined ? '#5545ba' : this.bgColor;
     this.altBgColor = this.altBgColor === undefined ? '#009998' : this.altBgColor;
     this.contentBgColor = this.contentBgColor === undefined ? 'white' : this.contentBgColor;
