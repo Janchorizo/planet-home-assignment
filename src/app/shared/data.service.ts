@@ -15,6 +15,7 @@ export class DataService {
       @Inject('AppStore') appStore: Store,
       private userActions: UserActions
   ) {
+    this.appStore = appStore;
     const initialState = this.appStore.getState();
     this.userSubject = new BehaviorSubject(initialState.user);
 
