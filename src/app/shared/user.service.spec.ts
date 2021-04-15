@@ -9,7 +9,7 @@ describe('UserService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-        imports: [
+        providers: [
             ApiService,
             DataService
         ]
