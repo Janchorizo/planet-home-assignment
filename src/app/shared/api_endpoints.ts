@@ -60,7 +60,7 @@ export const endpoints: Map<string, Endpoint> = new Map([
     // movies
     ['getMovies', GET(() => `/movies`)],
     ['getRandomUnratedMovie', GET(() => `/movies/random_unrated`)],
-    ['rateMovie', POST((({movieId}) => `/movies/${movieId}/rate`)],
+    ['rateMovie', POST(({movieId}) => `/movies/${movieId}/rate`)],
     ['getRatedMovies', GET(() => `/movies/rated`)],
     ['getMovie', GET(({movieId}) => `/movies/${movieId}`)],
     ['getUnratedMovies', GET(() => `/movies/unrated`)]
