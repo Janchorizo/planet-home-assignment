@@ -1,12 +1,16 @@
 <shared-page-container
   [focused]='focused'
   [transitioned]='transitioned'
-  [animationType]='"side"'>
-    <shared-button
+  [animationType]='"side"'
+  [bgColor]='"#9289c8"'
+  [altBgColor]='"#5545ba"'>
+    <span
+      id='back-link'
       (mouseenter)='handleMouseEnter()'
       (mouseleave)='handleMouseExit()'
-      (clickEvent)='onCLick()'>Go back to movies</shared-button>
-    <br/>
+      (click)='onCLick()'>
+        Go back to movies
+    </span>
 
     <h1>Account settings</h1>
 
