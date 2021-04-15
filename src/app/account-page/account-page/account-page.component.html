@@ -1,1 +1,19 @@
-<p>account-page works!</p>
+<shared-page-container
+  [focused]='focused'
+  [transitioned]='transitioned'
+  [animationType]='"side"'>
+    <shared-button
+      (mouseenter)='handleMouseEnter()'
+      (mouseleave)='handleMouseExit()'
+      (clickEvent)='onCLick()'>Go back to movies</shared-button>
+    <br/>
+
+    <h1>Account settings</h1>
+
+    <shared-container [bgColor]='"lightblue"' [rounded]='true'>
+        <shared-input [label]='"First name"' [placeholder]='"..."'></shared-input>
+        <shared-input [label]='"Last name"' [placeholder]='"..."'></shared-input>
+        <shared-input [label]='"Email"' [placeholder]='"x@y.z"'></shared-input>
+        <shared-input [type]='"password"' [label]='"Password"' [placeholder]='"xxxx"'></shared-input>
+    </shared-container>
+</shared-page-container>
