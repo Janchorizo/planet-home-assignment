@@ -1,1 +1,21 @@
-<p>movies-page works!</p>
+<shared-page-container
+  [focused]='focused'
+  [transitioned]='transitioned'
+  [altBgColor]='altBgColor'>
+    <div id="top-navigation">
+        <span
+          (mouseenter)='handleAccountMouseEnter()'
+          (mouseleave)='handleMouseLeave()'
+          (click)='handleAcountClick()'>
+            Account
+        </span>
+        <span
+          (mouseenter)='handleLogoutMouseEnter()'
+          (mouseleave)='handleMouseLeave()'
+          (click)='handleLogoutClick()'>
+            Logout
+        </span>
+    </div>
+
+    <h1>Movies</h1>
+</shared-page-container>
