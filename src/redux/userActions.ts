@@ -9,10 +9,10 @@ export const CLEAR_USER = 'CLEAR_USER';
 export const setUser: (payload: any, error: boolean)=>ReduxAction =
     createActionGenerator(SET_USER);
 
-export const clear: (payload: any, error: boolean)=>ReduxAction =
+export const clearUser: (payload: any, error: boolean)=>ReduxAction =
     createActionGenerator(CLEAR_USER);
 
 export class UserActions {
-    setUser: (payload: any, error: boolean)=>ReduxAction = setUser;
-    clear: (payload: any, error: boolean)=>ReduxAction = clear;
+    setUser: (payload: any, error?: boolean)=>ReduxAction = setUser;
+    clearUser: (payload: any, error?: boolean)=>ReduxAction = clearUser;
 }
