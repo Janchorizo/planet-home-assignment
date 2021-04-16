@@ -20,11 +20,14 @@
         <h1>Movies</h1>
         <p>See the latest movies, rate and continue discovering new ones.</p>
         <section>
-            <h2>
-                Have a look at these new movies
-            </h2>
             <div class='movieFlexContainer'>
-                <movie *ngFor='let movie of unratedMovies.movies'></movie>
+                <div id='unrated-movies-title'>
+                    <h2>Have a look at these new movies</h2>
+                    <p>
+                        A large collection of unrated movies for you to discover.
+                    </p>
+                </div>
+                <movie *ngFor='let movie of unratedMovies.movies' [movie]='movie'></movie>
             </div>
         </section>
         <section>
