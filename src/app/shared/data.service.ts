@@ -3,7 +3,7 @@ import { Store } from 'redux'
 import { BehaviorSubject } from 'rxjs';
 import { UserActions } from 'src/redux/userActions';
 import { MoviesActions } from 'src/redux/moviesActions';
-import { Movie } from 'src/app/shared/types';
+import { Movie, Rating } from 'src/app/shared/types';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,7 @@ export class DataService {
   userSubject: BehaviorSubject<object>;
   ratedMoviesSubject: BehaviorSubject<{page: number, movies: Movie[]}>;
   unratedMoviesSubject: BehaviorSubject<{page: number, movies: Movie[]}>;
+  ratingsSubject: BehaviorSubject<Map<string, Rating[]>>;
   unsubscribeStore: CallableFunction;
 
   constructor(
@@ -82,5 +83,15 @@ export class DataService {
   changeUnratedMoviesPage(page, movies) {
     this.appStore.dispatch(this.moviesActions.setUnratedMovies({movies}));
     this.appStore.dispatch(this.moviesActions.setUnratedPage({page}));
+  }
+
+  // Ratings
+
+  getRatings(): BehaviorSubject<Map<string, Rating[]>> {
+    return this.ratingsSubject;
+  }
+
+  setRatings(ratings: Map<string, Rating[]>) {
+    this.appStore.dispatch(this.moviesActions.setRatings({ratings}));
   }
 }
