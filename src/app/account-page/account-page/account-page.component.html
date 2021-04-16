@@ -12,12 +12,40 @@
         Go back to movies
     </span>
 
-    <h1>Account settings</h1>
-
-    <shared-container [bgColor]='"lightblue"' [rounded]='true'>
-        <shared-input [label]='"First name"' [placeholder]='"..."'></shared-input>
-        <shared-input [label]='"Last name"' [placeholder]='"..."'></shared-input>
-        <shared-input [label]='"Email"' [placeholder]='"x@y.z"'></shared-input>
-        <shared-input [type]='"password"' [label]='"Password"' [placeholder]='"xxxx"'></shared-input>
+    <shared-container id='account-settings'>
+        <h1>Account settings</h1>
+        <p>
+            Change your personal information and how you access the application.
+        </p>
+        <shared-container>
+            <shared-input [label]='"First name"' [placeholder]='"..."'></shared-input>
+            <shared-input [label]='"Last name"' [placeholder]='"..."'></shared-input>
+            <shared-input [label]='"Email"' [placeholder]='"x@y.z"'></shared-input>
+            
+        </shared-container>
+        <shared-container id='danger-settings' [bgColor]='"#f3f3f3"' [rounded]='true'>
+            <h2>Danger zone</h2>
+            <p>
+                These actions are irreversible and can lead to
+                unintentionally loose access to your account. Be
+                careful about proceeding.
+            </p>
+            <div>
+                Change the existing password.
+                <i>
+                    You will need to provide
+                    the new one the next time you login.
+                </i>
+                <form>
+                    <shared-input [type]='"password"' [label]='"Password"' [placeholder]='"xxxx"'></shared-input>
+                    <shared-button>
+                        Change the password
+                    </shared-button>
+                </form>
+            </div>
+            <shared-button>
+                Delete account
+            </shared-button>
+        </shared-container>
     </shared-container>
 </shared-page-container>
