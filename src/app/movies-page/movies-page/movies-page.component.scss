@@ -1,5 +1,9 @@
 @use '../../../styles.scss';
 
+::ng-deep #page-container .content{
+    overflow-y: auto;
+}
+
 #top-navigation{
     position: absolute;
     top: 5px;

@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Movie } from 'src/app/shared/types';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Movie, Rating } from 'src/app/shared/types';
 
 @Component({
   selector: 'movie',
@@ -8,10 +8,15 @@ import { Movie } from 'src/app/shared/types';
 })
 export class MovieComponent implements OnInit {
   @Input() movie: Movie;
+  @Input() rating: Rating|null;
+  @Output() onRate = new EventEmitter<number>();;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  handleRating(score: number) {
+    this.onRate.emit(score);
+  }
 }

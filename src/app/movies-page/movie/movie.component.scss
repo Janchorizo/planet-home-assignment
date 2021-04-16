@@ -62,3 +62,9 @@
 .content{
     padding: 10px;
 }
+.rating{
+    span.ratingButton{
+        cursor: pointer;
+        &:hover{color: gold};
+    }
+}

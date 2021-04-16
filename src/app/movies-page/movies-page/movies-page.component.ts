@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/shared/user.service';
 import { MoviesService } from 'src/app/shared/movies.service'
-import { Movie } from 'src/app/shared/types';
+import { Movie, Rating } from 'src/app/shared/types';
 
 @Component({
   selector: 'app-movies-page',
@@ -15,6 +15,7 @@ export class MoviesPageComponent implements OnInit {
     altBgColor = 'white';
     ratedMovies: {page: number, movies: Movie[]};
     unratedMovies: {page: number, movies: Movie[]};
+    ratings: Map<string, Rating[]>;
 
     constructor(
       private userService: UserService,
@@ -26,6 +27,10 @@ export class MoviesPageComponent implements OnInit {
 
         this.moviesService.getUnratedMovies().subscribe(
           movies => { this.unratedMovies = movies; }
+        );
+
+        this.moviesService.getRatings().subscribe(
+          ratings => { this.ratings = ratings; }
         );
     }
   
@@ -68,5 +73,15 @@ export class MoviesPageComponent implements OnInit {
 
     handleMouseLeave() {
         this.focused = false;
+    }
+
+    handleRateCreation(movieId: string, score: number) {
+      this.moviesService.rateMovie(movieId, score);
+    }
+
+    handleRateUpdate(movieId: string, score: number) {
+      this.moviesService.updateRating(movieId, score);
+      this.moviesService.fetchUnratedMoviesPage(this.unratedMovies.page);
+      this.moviesService.fetchRatedMoviesPage(this.ratedMovies.page);
     }
 }
