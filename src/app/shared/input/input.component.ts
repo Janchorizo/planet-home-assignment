@@ -29,5 +29,6 @@ export class InputComponent implements OnInit {
 
   handleChange(newValue) {
     this.value = newValue;
+    this.onChange.emit(newValue)
   }
 }
