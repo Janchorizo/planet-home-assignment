@@ -61,6 +61,7 @@ export class UserAccessComponent implements OnInit {
   
   ngOnInit(): void {
     console.log(this.userService)
+    console.log('use:\n> userService.hit("createUser", null, null, {first_name, last_name, email, password})')
   }
   
   setRegistrating(value: boolean) {
