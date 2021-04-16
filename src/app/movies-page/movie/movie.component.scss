@@ -1,0 +1,103 @@
+.movie{
+    --item-height: 300px;
+    --item-width: calc( 2 * var(--item-height) / 3);
+    --cover-height: 300px;
+    --cover-width: calc( 2 * var(--cover-height) / 3);
+    --ratings-height: 20px;
+    
+    height: var(--item-height);
+    width: var(--item-width);
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    position: relative;
+    border-radius: 10px;
+    background-color: #ffffff00;
+    transition: width ease-out .4s,
+    background-color ease-out .3s;
+    
+    &:hover{
+        --item-width: 450px;
+        --cover-height: 150px;
+        background-color: #cac3fa;
+        color: #1f2b5c;
+    }
+    &:hover .title{
+        display: none;
+    }
+    
+    .content{display: none;}
+    &:hover .content{display: initial;}
+}
+.cover{
+    height: var(--cover-height);
+    width: var(--cover-width);
+    position: relative;
+    
+    .rating{
+        height: var(--ratings-height);
+        width: 100%;
+        font-size: var(--ratings-height);
+        line-height: var(--ratings-height);
+        text-align: center;
+    }
+    
+    img{
+        display:block;
+        height: calc(100% - var(--ratings-height));
+        width: 100%;
+        border-radius: 10px;
+    }
+    
+    .title{
+        position: absolute;
+        width: calc(100% - 20px);
+        bottom: var(--ratings-height);
+        padding: 10px;
+        border-radius: 0 0 10px 10px;
+        background-color: #1f2b5c73;
+        color: white;
+    }
+}
+.content{
+    padding: 10px;
+
+    p{
+        max-height: 110px;
+        overflow: auto;
+    }
+}
+.rating{
+    span.ratingButton{
+        cursor: pointer;
+        color: darkgrey;
+        &:hover{color: gold};
+    }
+
+    span.ratingButton:nth-child(1){
+        color: #5545ba;
+    }
+    span.ratingButton:nth-child(2){
+        color: #5545ba;
+        &.rating-1{color: darkgrey;}
+    }
+    span.ratingButton:nth-child(3){
+        color: #5545ba;
+        &.rating-1{color: darkgrey;}
+        &.rating-2{color: darkgrey;}
+    }
+    span.ratingButton:nth-child(4){
+        &.rating-4{color: #5545ba;}
+        &.rating-5{color: #5545ba;}
+    }
+    span.ratingButton:nth-child(5){
+        &.rating-5{color: #5545ba;}   
+    }
+
+    span.ratingButton{
+        cursor: pointer;
+        color: darkgrey;
+        &.rating-null{color: darkgrey;}
+        &:hover{color: gold!important};
+    }
+}

@@ -1,0 +1,26 @@
+<div class='movie'>
+    <div class="cover">
+      <img src="{{ movie?.poster_url }}" alt="">
+      <div class="title">
+        <h1>{{ movie?.title }}</h1>
+        <span class="year">({{ movie?.year }})</span>
+      </div>
+      <div class="rating">
+        <span [class]='["ratingButton", "rating-"+rating]' (click)='handleRating(1)'>★</span>
+        <span [class]='["ratingButton", "rating-"+rating]' (click)='handleRating(2)'>★</span>
+        <span [class]='["ratingButton", "rating-"+rating]' (click)='handleRating(3)'>★</span>
+        <span [class]='["ratingButton", "rating-"+rating]' (click)='handleRating(4)'>★</span>
+        <span [class]='["ratingButton", "rating-"+rating]' (click)='handleRating(5)'>★</span>
+      </div>
+    </div>
+    <div class="content">
+      <h1>{{ movie?.title }}</h1>
+      <span class="year">({{ movie?.year }})</span>
+      <span class="duration">Duration: {{ movie?.duration }} min</span>
+      <span class="director">Directed by: {{ movie?.director }}</span>
+      <p>{{ movie?.description }}</p>
+      <div class="links">
+        <a target='blank' href="{{ movie?.url }}">See on IMDB</a>
+      </div>
+    </div>
+  </div>

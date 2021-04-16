@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { DataService } from './data.service';
+import { User } from './types';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { DataService } from './data.service';
 export class UserService {
   apiService: ApiService;
   dataService: DataService;
-  user: object|null;
+  user: User|null;
 
   constructor(
     apiService: ApiService,
@@ -17,7 +18,7 @@ export class UserService {
       this.apiService = apiService;
       this.dataService = dataService;
       this.dataService.getUser().subscribe(
-        user => { this.user = user; }
+        (user: User) => { this.user = user; }
       );
   }
 
@@ -30,27 +31,33 @@ export class UserService {
   }
 
   fetchUser() {
-    this.apiService.hit('getCurrentUser').subscribe(
+    this.apiService.hit('getCurrentUser', null, null, null, this.user?.token).subscribe(
       response => {
         if (response.status === 200) {
-          this.dataService.setUser(response.body);
+          this.dataService.setUser({
+            ...response.body,
+            token: this.user.token
+          })
         }
       }
     );
   }
 
   register(user) {
-    this.apiService.hit('createUser', null, null, user).subscribe(
+    this.apiService.hit('createUser', null, null, {user}).subscribe(
       response => {
         if (response.status === 200) {
-          this.login({email: user.email, pasword: user.password});
+          this.dataService.setUser({
+            ...response.body.user,
+            token: response.body.token
+          })
         }
       }
     );
   }
 
   deleteAccount() {
-    this.apiService.hit('deleteCurrentUser').subscribe(
+    this.apiService.hit('deleteCurrentUser', null, null, null, this.user?.token).subscribe(
       response => {
         if (response.status === 200) {
           this.dataService.clearUser();
@@ -63,15 +70,21 @@ export class UserService {
     this.apiService.hit('login', null, null, user).subscribe(
       response => {
         if (response.status === 200) {
-          console.info('Succesfuly logged in. Token: ', response.body);
-          this.fetchUser();
+          this.dataService.setUser({
+            ...response.body.user,
+            token: response.body.token
+          })
         }
       }
     );
   }
 
+  logout() {
+    this.dataService.clearUser();
+  }
+
   updateAccount(user) {
-    this.apiService.hit('updateCurrentUser', null, null, user).subscribe(
+    this.apiService.hit('updateCurrentUser', null, null, {user}, this.user?.token).subscribe(
       response => {
         if (response.status === 200) {
           this.fetchUser();

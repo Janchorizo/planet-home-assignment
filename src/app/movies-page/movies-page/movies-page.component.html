@@ -1,7 +1,8 @@
 <shared-page-container
   [focused]='focused'
   [transitioned]='transitioned'
-  [altBgColor]='altBgColor'>
+  [altBgColor]='altBgColor'
+  id='page-container'>
     <div id="top-navigation">
         <span
           (mouseenter)='handleAccountMouseEnter()'
@@ -16,6 +17,51 @@
             Logout
         </span>
     </div>
-
-    <h1>Movies</h1>
+    <shared-container [id]='"movies-page"'>
+        <h1>Movies</h1>
+        <p>See the latest movies, rate and continue discovering new ones.</p>
+        <section>
+            <div class='movieFlexContainer'>
+                <div id='unrated-movies-title'>
+                    <h2>Have a look at these new movies</h2>
+                    <p>
+                        A large collection of unrated movies for you to discover.
+                    </p>
+                    <nav>
+                        <shared-button *ngIf='unratedMovies.page > 1' (clickEvent)='handlePrevUnratedMoviesPage()'>
+                            See previous page
+                        </shared-button>
+                        <shared-button *ngIf='unratedMovies.movies?.length > 0' (clickEvent)='handleNextUnratedMoviesPage()'>
+                            See next page
+                        </shared-button>
+                    </nav>
+                </div>
+                <movie
+                  *ngFor='let movie of unratedMovies.movies'
+                  (onRate)='handleRateCreation(movie.id, $event)'
+                  [rating]='null'
+                  [movie]='movie'></movie>
+            </div>
+        </section>
+        <section>
+            <h2>
+                Your rated movies
+            </h2>
+            <nav>
+                <shared-button *ngIf='ratedMovies.page > 1' (clickEvent)='handlePrevRatedMoviesPage()'>
+                    See previous page
+                </shared-button>
+                <shared-button *ngIf='ratedMovies.movies?.length > 0' (clickEvent)='handleNextRatedMoviesPage()'>
+                    See next page
+                </shared-button>
+            </nav>
+            <div class='movieFlexContainer'>
+                <movie
+                    *ngFor='let movie of ratedMovies.movies'
+                    (onRate)='handleRateUpdate(movie.id, $event)'
+                    [rating]='ratings?.get(movie.id)?.score'
+                    [movie]='movie'></movie>
+            </div>
+        </section>
+    </shared-container>
 </shared-page-container>

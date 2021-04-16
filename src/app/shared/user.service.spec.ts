@@ -7,6 +7,7 @@ import { DataService } from './data.service';
 import { UserService } from './user.service';
 import { UserActions } from 'src/redux/userActions';
 import { appReducer } from 'src/redux/appReducer';
+import { MoviesActions } from 'src/redux/moviesActions';
 
 describe('UserService', () => {
   let service: UserService;
@@ -22,7 +23,8 @@ describe('UserService', () => {
             ApiService,
             DataService,
             { provide: 'AppStore', useValue: store },
-            UserActions
+            UserActions,
+            MoviesActions
         ]
     });
     service = TestBed.inject(UserService);

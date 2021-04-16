@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MoviesPageComponent } from './movies-page.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 describe('MoviesPageComponent', () => {
   let component: MoviesPageComponent;
@@ -10,6 +11,7 @@ describe('MoviesPageComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ MoviesPageComponent ],
       imports: [
+        SharedModule,
         RouterTestingModule.withRoutes(
           [
             {path: 'app', children: [

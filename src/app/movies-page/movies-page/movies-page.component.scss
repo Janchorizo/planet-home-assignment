@@ -1,5 +1,20 @@
 @use '../../../styles.scss';
 
+::ng-deep #page-container .content{
+    overflow-y: auto;
+}
+
+::ng-deep #movies-page{
+    h1{
+        font-family: styles.$text-serif;
+    }
+
+    nav button{
+        margin-bottom: 1em;
+        margin-right: 1em;
+    }
+}
+
 #top-navigation{
     position: absolute;
     top: 5px;
@@ -18,5 +33,26 @@
         &:hover{
             color: styles.$main;
         }
+    }
+}
+.movieFlexContainer{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: lavender;
+    margin-left: -30px;
+    padding: 10px 30px;
+    width: 100%;
+}
+
+@media only screen and (max-width: 1450px) {
+    #unrated-movies-title{
+        display: block;
+        width: 100%;
+    }
+    .movieFlexContainer{
+        margin-left: -30px;
+        padding: 10px 15px;
+        width: calc(100% + 30px);
     }
 }

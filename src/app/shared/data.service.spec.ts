@@ -4,6 +4,7 @@ import { createStore } from 'redux';
 import { DataService } from './data.service';
 import { UserActions } from 'src/redux/userActions';
 import { appReducer } from 'src/redux/appReducer';
+import { MoviesActions } from 'src/redux/moviesActions';
 
 describe('DataService', () => {
   let service: DataService;
@@ -14,7 +15,8 @@ describe('DataService', () => {
     TestBed.configureTestingModule({
       providers: [
         { provide: 'AppStore', useValue: store },
-        UserActions
+        UserActions,
+        MoviesActions
       ]
     });
     service = TestBed.inject(DataService);
