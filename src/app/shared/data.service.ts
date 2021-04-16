@@ -26,11 +26,11 @@ export class DataService {
     this.userSubject = new BehaviorSubject(initialState.user);
     this.ratedMoviesSubject = new BehaviorSubject({
       page: initialState.movies.ratedPage,
-      movies: initialState.movies.ratedPage
+      movies: initialState.movies.movies
     });
     this.unratedMoviesSubject = new BehaviorSubject({
       page: initialState.movies.unratedPage,
-      movies: initialState.movies.unratedPage
+      movies: initialState.movies.movies
     });
     this.ratingsSubject = new BehaviorSubject(initialState.ratings);
 
