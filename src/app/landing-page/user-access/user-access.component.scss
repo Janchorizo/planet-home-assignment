@@ -1,0 +1,56 @@
+@use '../../../styles.scss';
+
+#user-access{
+    position: absolute;
+    top: 0;
+    right: 40px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    .go{
+        color: styles.$main;
+        hr{
+            background-color: styles.$main;
+            border: solid 2px styles.$main;
+        }
+    }
+
+    #goToApp:hover{
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    .userAccessRoundedContainer{
+        background-color: white;
+        padding: 125px 0 125px 125px;
+        transition: all ease-in-out .3s;
+        clip-path: circle(55% at 103% 50%);
+
+        #toggle{
+            font-size: styles.$text-large;
+            font-weight: 600;
+            color: styles.$darker;
+
+            span{
+                cursor: pointer;
+                &:hover{text-decoration: underline;}
+                &.active{
+                    color: styles.$main;
+                }
+            }
+        }
+    }
+    .userAccessRoundedContainer > div{
+        display: none;
+    }
+    .userAccessRoundedContainer > div:first-child{
+        display: initial;
+    }
+    .userAccessRoundedContainer:hover  > div{
+        display: initial;
+    }
+    .userAccessRoundedContainer:hover > div:first-child{
+        display: none;
+    }
+}
