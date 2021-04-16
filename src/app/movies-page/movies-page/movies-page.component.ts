@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/shared/user.service';
 
 @Component({
   selector: 'app-movies-page',
@@ -12,7 +13,7 @@ export class MoviesPageComponent implements OnInit {
     altBgColor = 'white';
     router: Router;
   
-    constructor(router: Router){
+    constructor(private userService: UserService, router: Router){
       this.router = router;
     }
   
@@ -47,6 +48,7 @@ export class MoviesPageComponent implements OnInit {
     handleLogoutClick() {
         this.transitioned = true;
         setTimeout(() => {
+          this.userService.logout();
           this.router.navigate(['/']);
         }, 600);
     }
