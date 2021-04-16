@@ -18,7 +18,7 @@ function hasParam (action: ReduxAction, key: string): boolean {
   return Object.hasOwnProperty.call(action.payload, key);
 }
 
-export function markBreaksReducer(prevState=initialState, action: ReduxAction) {
+export function moviesReducer(prevState=initialState, action: ReduxAction) {
   let newState = prevState;
   
   switch(action.type) {
