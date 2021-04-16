@@ -1,9 +1,9 @@
 <div class='movie'>
     <div class="cover">
-      <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2F1.bp.blogspot.com%2F-IJp_GHd0zCk%2FWlx_JP8oaLI%2FAAAAAAAAFlQ%2FUPt12PSczEMODqANbTq4uOWDzMDQN5IAQCLcBGAs%2Fs1600%2Fcoba.jpg&f=1&nofb=1" alt="">
+      <img src="{{ movie.poster_url }}" alt="">
       <div class="title">
-        <h1>Mad Max</h1>
-        <span class="year">(2004)</span>
+        <h1>{{ movie.title }}</h1>
+        <span class="year">({{ movie.year }})</span>
       </div>
       <div class="rating">
         <span>★</span>
@@ -14,12 +14,13 @@
       </div>
     </div>
     <div class="content">
-      <h1>Mad Max</h1>
-      <span class="year">(2004)</span>
-      <span class="duration">Duration: 90 min</span>
-      <span class="director">Directed by: Fury Road</span>
+      <h1>{{ movie.title }}</h1>
+      <span class="year">({{ movie.year }})</span>
+      <span class="duration">Duration: {{ movie.duration }} min</span>
+      <span class="director">Directed by: {{ movie.director }}</span>
+      <p>{{ movie.description }}</p>
       <div class="links">
-        <a href="#">See on IMDB</a>
+        <a target='blank' href="{{ movie.url }}">See on IMDB</a>
       </div>
     </div>
   </div>
