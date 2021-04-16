@@ -22,8 +22,8 @@ export const setUnratedMovies: (payload: any, error: boolean)=>ReduxAction =
 
 // For bootstrapping purposes
 export class MoviesActions {
-  setRatedPage: (payload: any, error: boolean)=>ReduxAction = setRatedPage;
-  setRatedMovies: (payload: any, error: boolean)=>ReduxAction = setRatedMovies;
-  setUnratedPage: (payload: any, error: boolean)=>ReduxAction = setUnratedPage;
-  setUnratedMovies: (payload: any, error: boolean)=>ReduxAction = setUnratedMovies;
+  setRatedPage: (payload: any, error?: boolean)=>ReduxAction = setRatedPage;
+  setRatedMovies: (payload: any, error?: boolean)=>ReduxAction = setRatedMovies;
+  setUnratedPage: (payload: any, error?: boolean)=>ReduxAction = setUnratedPage;
+  setUnratedMovies: (payload: any, error?: boolean)=>ReduxAction = setUnratedMovies;
 }
