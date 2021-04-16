@@ -40,9 +40,15 @@ export class ApiService {
       parameters: object|null=null,
       queryParams: {}|null=null,
       body: any|null=null,
+      authToken: string|null=null,
       retries: number=3): Observable<APIResponse>
   {
     let response = null;
+    const options: {
+      params?: any,
+      responseType?: string,
+      headers?: any
+    } = {};
     if (endpoints.has(endpointName) === false) {
       return response;
     }
@@ -54,16 +60,22 @@ export class ApiService {
     const params = queryParams === null
       ? new HttpParams()
       : new HttpParams({fromObject: queryParams});
+
+    options.responseType = 'json';
+    options.params = params;
+    if (authToken !== null) {
+      options.headers = {Authorization: 'Bearer: '+authToken};
+    }
   
     if (acceptsBody === true) {
-      return hitWithHttpClient(this.httpClient, url, body, {responseType: 'json', params})
+      return hitWithHttpClient(this.httpClient, url, body, options)
         .pipe(
           retry(retries), // retry a failed request up to 3 times
           map(body => ({ok: true, status: 200, body})),
           catchError(this.handleError), // then handle the error
         );
     } else {
-      return hitWithHttpClient(this.httpClient, url, {responseType: 'json', params})
+      return hitWithHttpClient(this.httpClient, url, options)
         .pipe(
           retry(retries), // retry a failed request up to 3 times
           map(body => ({ok: true, status: 200, body})),
