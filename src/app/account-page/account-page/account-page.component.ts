@@ -45,9 +45,9 @@ export class AccountPageComponent implements OnInit {
     if (newValue.length > 0) {
       console.info('Changing firstname to ', newValue);
 
-      // this.userService.updateAccount({
-      //   first_name: newValue
-      // });
+      this.userService.updateAccount({
+        first_name: newValue
+      });
     }
   }
 
@@ -55,9 +55,9 @@ export class AccountPageComponent implements OnInit {
     if (newValue.length > 0) {
       console.info('Changing lastname to ', newValue);
 
-      // this.userService.updateAccount({
-      //   last_name: newValue
-      // });
+      this.userService.updateAccount({
+        last_name: newValue
+      });
     }
   }
 
@@ -65,9 +65,9 @@ export class AccountPageComponent implements OnInit {
     if (newValue.length > 0) {
       console.info('Changing email to ', newValue);
 
-      // this.userService.updateAccount({
-      //   email: newValue
-      // });
+      this.userService.updateAccount({
+        email: newValue
+      });
     }
   }
 
@@ -79,13 +79,13 @@ export class AccountPageComponent implements OnInit {
     if (this.newPassword?.length > 0) {
       console.info('Changing password to ', this.newPassword);
 
-      // this.userService.updateAccount({
-      //   password: this.newPassword
-      // });
+      this.userService.updateAccount({
+        password: this.newPassword
+      });
     }
   }
 
   handleDeleteAccountClick() {
-    // this.userService.deleteAccount();   
+    this.userService.deleteAccount();   
   }
 }
