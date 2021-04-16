@@ -13,7 +13,7 @@ export class DataService {
   userSubject: BehaviorSubject<object>;
   ratedMoviesSubject: BehaviorSubject<{page: number, movies: Movie[]}>;
   unratedMoviesSubject: BehaviorSubject<{page: number, movies: Movie[]}>;
-  ratingsSubject: BehaviorSubject<Map<string, Rating[]>>;
+  ratingsSubject: BehaviorSubject<Map<string, Rating>>;
   unsubscribeStore: CallableFunction;
 
   constructor(
@@ -49,6 +49,7 @@ export class DataService {
       page: newState.movies.unratedPage,
       movies: newState.movies.unratedMovies
     });
+    this.ratingsSubject.next(newState.movies.ratings);
   }
 
   // User
@@ -88,11 +89,11 @@ export class DataService {
 
   // Ratings
 
-  getRatings(): BehaviorSubject<Map<string, Rating[]>> {
+  getRatings(): BehaviorSubject<Map<string, Rating>> {
     return this.ratingsSubject;
   }
 
-  setRatings(ratings: Map<string, Rating[]>) {
+  setRatings(ratings: Map<string, Rating>) {
     this.appStore.dispatch(this.moviesActions.setRatings({ratings}));
   }
 }

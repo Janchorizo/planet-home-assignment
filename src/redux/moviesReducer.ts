@@ -14,7 +14,7 @@ const initialState: {
   ratedPage: number,
   unratedMovies: Movie[],
   unratedPage: number,
-  ratings: Map<string, Rating[]>
+  ratings: Map<string, Rating>
 } = {
   ratedMovies: [],
   ratedPage: 0,
@@ -57,6 +57,6 @@ export function moviesReducer(prevState=initialState, action: ReduxAction) {
         }
         break;
   }
-  
+
   return newState
 }

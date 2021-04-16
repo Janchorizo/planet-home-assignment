@@ -30,7 +30,7 @@ export class MoviesService {
     return this.dataService.getUnratedMovies();
   }
 
-  getRatings(): BehaviorSubject<Map<string, Rating[]>> {
+  getRatings(): BehaviorSubject<Map<string, Rating>> {
     return this.dataService.ratingsSubject;
   }
 
@@ -82,10 +82,10 @@ export class MoviesService {
     );
   }
 
-  updateRating(movieId: string, score: number) {
+  updateRating(ratingId: string, score: number) {
     this.apiService.hit(
       'updateRating',
-      {movieId},
+      {ratingId},
       null,
       {score},
       this.user?.token
@@ -108,8 +108,10 @@ export class MoviesService {
     ).subscribe(
       response => {
         if (response.status === 200) {
-          const ratingMap: Map<string, Rating[]> = 
-            new Map(response.body.map(d => [d.movie_id, d]));
+          const ratingMap: Map<string, Rating> = 
+            new Map(response.body.map(d =>
+              [d.movie.id, {id: d.id, score: d.score, movieId: d.movie.id}]
+            ));
           this.dataService.setRatings(ratingMap);
         }
       }

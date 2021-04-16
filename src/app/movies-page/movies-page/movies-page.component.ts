@@ -15,7 +15,7 @@ export class MoviesPageComponent implements OnInit {
     altBgColor = 'white';
     ratedMovies: {page: number, movies: Movie[]};
     unratedMovies: {page: number, movies: Movie[]};
-    ratings: Map<string, Rating[]>;
+    ratings: Map<string, Rating>;
 
     constructor(
       private userService: UserService,
@@ -77,11 +77,15 @@ export class MoviesPageComponent implements OnInit {
 
     handleRateCreation(movieId: string, score: number) {
       this.moviesService.rateMovie(movieId, score);
+      this.moviesService.fetchUnratedMoviesPage(this.unratedMovies.page);
+      this.moviesService.fetchRatedMoviesPage(this.ratedMovies.page);
     }
 
     handleRateUpdate(movieId: string, score: number) {
-      this.moviesService.updateRating(movieId, score);
-      this.moviesService.fetchUnratedMoviesPage(this.unratedMovies.page);
+      if (this.ratings.has(movieId) === false) {return}
+
+      const rating = this.ratings.get(movieId);
+      this.moviesService.updateRating(rating.id, score);
       this.moviesService.fetchRatedMoviesPage(this.ratedMovies.page);
     }
 }
