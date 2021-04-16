@@ -20,16 +20,19 @@
             </p>
             <shared-undoable-input
               (onChange)='handleFirstNameChange($event)'
+              [initialValue]='user?.first_name'
               [label]='"First name"'
               [placeholder]='"..."'>
             </shared-undoable-input>
             <shared-undoable-input
               (onChange)='handleLastNameChange($event)'
+              [initialValue]='user?.last_name'
               [label]='"Last name"'
               [placeholder]='"..."'>
             </shared-undoable-input>
             <shared-undoable-input
               (onChange)='handleEmailChange($event)'
+              [initialValue]='user?.email'
               [label]='"Email"'
               [placeholder]='"x@y.z"'>
             </shared-undoable-input>
@@ -50,6 +53,7 @@
                 </i>
                 <form>
                     <shared-input
+                      (onChange)='handlePasswordChange($event)'
                       [type]='"password"'
                       [label]='"Password"'
                       [placeholder]='"xxxx"'>

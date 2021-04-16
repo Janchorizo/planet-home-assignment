@@ -12,10 +12,15 @@ export class AccountPageComponent implements OnInit {
   transitioned = false;
   router: Router;
   userService: UserService;
+  user: any;
+  newPassword: string;
 
   constructor(router: Router, userService: UserService){
     this.userService = userService;
     this.router = router;
+    this.userService.getUser().subscribe(
+      user => { this.user = user; }
+    );
   }
 
   ngOnInit(): void {
@@ -37,26 +42,50 @@ export class AccountPageComponent implements OnInit {
   }
 
   handleFirstNameChange(newValue) {
+    if (newValue.length > 0) {
+      console.info('Changing firstname to ', newValue);
 
+      // this.userService.updateAccount({
+      //   first_name: newValue
+      // });
+    }
   }
 
   handleLastNameChange(newValue) {
-    
+    if (newValue.length > 0) {
+      console.info('Changing lastname to ', newValue);
+
+      // this.userService.updateAccount({
+      //   last_name: newValue
+      // });
+    }
   }
 
   handleEmailChange(newValue) {
-      
+    if (newValue.length > 0) {
+      console.info('Changing email to ', newValue);
+
+      // this.userService.updateAccount({
+      //   email: newValue
+      // });
+    }
   }
 
   handlePasswordChange(newValue) {
-      
+    this.newPassword = newValue;
   }
 
   handlePasswordChangeClick() {
-      
+    if (this.newPassword?.length > 0) {
+      console.info('Changing password to ', this.newPassword);
+
+      // this.userService.updateAccount({
+      //   password: this.newPassword
+      // });
+    }
   }
 
   handleDeleteAccountClick() {
-      
+    // this.userService.deleteAccount();   
   }
 }
