@@ -32,6 +32,7 @@ export class DataService {
       page: initialState.movies.unratedPage,
       movies: initialState.movies.unratedPage
     });
+    this.ratingsSubject = new BehaviorSubject(initialState.ratings);
 
     this.unsubscribeStore = this.appStore.subscribe(
       this.handleStoreUpdate.bind(this));
