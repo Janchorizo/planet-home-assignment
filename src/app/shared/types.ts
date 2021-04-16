@@ -12,3 +12,11 @@ export interface APIResponse{
     status: number;
     body?: any;
 }
+
+export interface User {
+  first_name: string;
+  last_name: string;
+  email: string;
+  id: string;
+  token: string;
+}
