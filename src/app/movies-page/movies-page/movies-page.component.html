@@ -27,8 +27,14 @@
                     <p>
                         A large collection of unrated movies for you to discover.
                     </p>
-                    <shared-button>See previous page</shared-button>
-                    <shared-button>See next page</shared-button>
+                    <nav>
+                        <shared-button *ngIf='unratedMovies.page > 1' (clickEvent)='handlePrevUnratedMoviesPage()'>
+                            See previous page
+                        </shared-button>
+                        <shared-button *ngIf='unratedMovies.movies.length > 0' (clickEvent)='handleNextUnratedMoviesPage()'>
+                            See next page
+                        </shared-button>
+                    </nav>
                 </div>
                 <movie
                   *ngFor='let movie of unratedMovies.movies'
@@ -41,15 +47,21 @@
             <h2>
                 Your rated movies
             </h2>
-            <shared-button>See previous page</shared-button>
-                <shared-button>See next page</shared-button>
-                <div class='movieFlexContainer'>
-                    <movie
-                        *ngFor='let movie of ratedMovies.movies'
-                        (onRate)='handleRateUpdate(movie.id, $event)'
-                        [rating]='ratings?.get(movie.id)?.score'
-                        [movie]='movie'></movie>
-                </div>
+            <nav>
+                <shared-button *ngIf='ratedMovies.page > 1' (clickEvent)='handlePrevRatedMoviesPage()'>
+                    See previous page
+                </shared-button>
+                <shared-button *ngIf='ratedMovies.movies.length > 0' (clickEvent)='handleNextRatedMoviesPage()'>
+                    See next page
+                </shared-button>
+            </nav>
+            <div class='movieFlexContainer'>
+                <movie
+                    *ngFor='let movie of ratedMovies.movies'
+                    (onRate)='handleRateUpdate(movie.id, $event)'
+                    [rating]='ratings?.get(movie.id)?.score'
+                    [movie]='movie'></movie>
+            </div>
         </section>
     </shared-container>
 </shared-page-container>

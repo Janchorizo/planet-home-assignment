@@ -19,8 +19,8 @@
     &:hover{
         --item-width: 450px;
         --cover-height: 150px;
-        background-color: #3a3461;
-        color: #e5e5e5;
+        background-color: #cac3fa;
+        color: #1f2b5c;
     }
     &:hover .title{
         display: none;
@@ -61,6 +61,11 @@
 }
 .content{
     padding: 10px;
+
+    p{
+        max-height: 110px;
+        overflow: auto;
+    }
 }
 .rating{
     span.ratingButton{

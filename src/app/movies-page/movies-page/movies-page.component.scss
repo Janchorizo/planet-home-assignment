@@ -4,6 +4,17 @@
     overflow-y: auto;
 }
 
+::ng-deep #movies-page{
+    h1{
+        font-family: styles.$text-serif;
+    }
+
+    nav button{
+        margin-bottom: 1em;
+        margin-right: 1em;
+    }
+}
+
 #top-navigation{
     position: absolute;
     top: 5px;
