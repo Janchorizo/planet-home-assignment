@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/shared/user.service';
 
 @Component({
   selector: 'app-account-page',
@@ -10,8 +11,10 @@ export class AccountPageComponent implements OnInit {
   focused = false;
   transitioned = false;
   router: Router;
+  userService: UserService;
 
-  constructor(router: Router){
+  constructor(router: Router, userService: UserService){
+    this.userService = userService;
     this.router = router;
   }
 
