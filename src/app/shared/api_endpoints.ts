@@ -58,10 +58,10 @@ export const endpoints: Map<string, Endpoint> = new Map([
     ['updateRating', PUT(({ratingId}) => `${baseUrl}/ratings/${ratingId}`)],
 
     // movies
-    ['getMovies', GET(() => `/movies`)],
-    ['getRandomUnratedMovie', GET(() => `/movies/random_unrated`)],
-    ['rateMovie', POST(({movieId}) => `/movies/${movieId}/rate`)],
-    ['getRatedMovies', GET(() => `/movies/rated`)],
-    ['getMovie', GET(({movieId}) => `/movies/${movieId}`)],
-    ['getUnratedMovies', GET(() => `/movies/unrated`)]
+    ['getMovies', GET(() => `${baseUrl}/movies`)],
+    ['getRandomUnratedMovie', GET(() => `${baseUrl}/movies/random_unrated`)],
+    ['rateMovie', POST(({movieId}) => `${baseUrl}/movies/${movieId}/rate`)],
+    ['getRatedMovies', GET(() => `${baseUrl}/movies/rated`)],
+    ['getMovie', GET(({movieId}) => `${baseUrl}/movies/${movieId}`)],
+    ['getUnratedMovies', GET(() => `${baseUrl}/movies/unrated`)]
 ]);
