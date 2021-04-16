@@ -11,6 +11,7 @@ import { ContainerComponent } from './container/container.component';
 import { PageContainerComponent } from './page-container/page-container.component';
 import { UserActions } from 'src/redux/userActions';
 import { appReducer } from 'src/redux/appReducer';
+import { MoviesActions } from 'src/redux/moviesActions';
 
 const store = createStore(appReducer);
 
@@ -36,7 +37,8 @@ const store = createStore(appReducer);
   ],
   providers: [
     { provide: 'AppStore', useValue: store },
-    UserActions
+    UserActions,
+    MoviesActions
   ]
 })
 export class SharedModule { }
