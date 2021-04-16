@@ -35,8 +35,8 @@ export class MoviesPageComponent implements OnInit {
     }
   
     ngOnInit(): void {
-      this.moviesService.fetchRatedMoviesPage(0);
-      this.moviesService.fetchUnratedMoviesPage(0);
+      this.moviesService.fetchRatedMoviesPage(this.ratedMovies.page);
+      this.moviesService.fetchUnratedMoviesPage(this.unratedMovies.page);
     }
   
     handleMouseEnter(){
@@ -73,6 +73,30 @@ export class MoviesPageComponent implements OnInit {
 
     handleMouseLeave() {
         this.focused = false;
+    }
+
+    handlePrevUnratedMoviesPage() {
+      if (this.unratedMovies.page > 0) {
+        this.moviesService.fetchUnratedMoviesPage(this.unratedMovies.page - 1);
+      }
+    }
+
+    handleNextUnratedMoviesPage() {
+      if (this.unratedMovies.movies.length > 0) {
+        this.moviesService.fetchUnratedMoviesPage(this.unratedMovies.page + 1);
+      }
+    }
+
+    handlePrevRatedMoviesPage() {
+      if (this.ratedMovies.page > 0) {
+        this.moviesService.fetchRatedMoviesPage(this.ratedMovies.page - 1);
+      }
+    }
+
+    handleNextRatedMoviesPage() {
+      if (this.ratedMovies.movies.length > 0) {
+        this.moviesService.fetchRatedMoviesPage(this.ratedMovies.page + 1);
+      }
     }
 
     handleRateCreation(movieId: string, score: number) {

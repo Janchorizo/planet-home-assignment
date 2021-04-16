@@ -17,9 +17,9 @@ const initialState: {
   ratings: Map<string, Rating>
 } = {
   ratedMovies: [],
-  ratedPage: 0,
+  ratedPage: 1,
   unratedMovies: [],
-  unratedPage: 0,
+  unratedPage: 1,
   ratings: new Map()
 };
 
