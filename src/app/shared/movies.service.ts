@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { DataService } from './data.service';
-import { User } from './types';
+import { User, Movie } from './types';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MoviesService {
   user: User|null;
-  pageSize = 6;
+  ratedPageSize = 6;
+  unratedPageSize = 3;
 
   constructor(
     private apiService: ApiService,
@@ -19,11 +21,11 @@ export class MoviesService {
     );
   }
 
-  getRatedMovies() {
+  getRatedMovies(): BehaviorSubject<{page: number, movies: Movie[]}> {
     return this.dataService.getRatedMovies();
   }
 
-  getUnratedMovies() {
+  getUnratedMovies(): BehaviorSubject<{page: number, movies: Movie[]}> {
     return this.dataService.getUnratedMovies();
   }
 
@@ -31,7 +33,7 @@ export class MoviesService {
     this.apiService.hit(
       'getRatedMovies',
       null,
-      {page, size: this.pageSize},
+      {page, size: this.ratedPageSize},
       null,
       this.user?.token
     ).subscribe(
@@ -47,7 +49,7 @@ export class MoviesService {
     this.apiService.hit(
       'getUnratedMovies',
       null,
-      {page, size: this.pageSize},
+      {page, size: this.unratedPageSize},
       null,
       this.user?.token
     ).subscribe(

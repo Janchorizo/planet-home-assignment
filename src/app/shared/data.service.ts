@@ -3,6 +3,7 @@ import { Store } from 'redux'
 import { BehaviorSubject } from 'rxjs';
 import { UserActions } from 'src/redux/userActions';
 import { MoviesActions } from 'src/redux/moviesActions';
+import { Movie } from 'src/app/shared/types';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,8 @@ import { MoviesActions } from 'src/redux/moviesActions';
 export class DataService {
   appStore: Store;
   userSubject: BehaviorSubject<object>;
-  ratedMoviesSubject: BehaviorSubject<object>;
-  unratedMoviesSubject: BehaviorSubject<object>;
+  ratedMoviesSubject: BehaviorSubject<{page: number, movies: Movie[]}>;
+  unratedMoviesSubject: BehaviorSubject<{page: number, movies: Movie[]}>;
   unsubscribeStore: CallableFunction;
 
   constructor(
@@ -40,11 +41,11 @@ export class DataService {
     this.userSubject.next(newState.user);
     this.ratedMoviesSubject.next({
       page: newState.movies.ratedPage,
-      movies: newState.movies.ratedPage
+      movies: newState.movies.ratedMovies
     });
     this.unratedMoviesSubject.next({
       page: newState.movies.unratedPage,
-      movies: newState.movies.unratedPage
+      movies: newState.movies.unratedMovies
     });
   }
 
@@ -65,11 +66,11 @@ export class DataService {
 
   // Movies
 
-  getRatedMovies(): BehaviorSubject<object> {
+  getRatedMovies(): BehaviorSubject<{page: number, movies: Movie[]}> {
     return this.ratedMoviesSubject;
   }
 
-  getUnratedMovies(): BehaviorSubject<object> {
+  getUnratedMovies(): BehaviorSubject<{page: number, movies: Movie[]}> {
     return this.unratedMoviesSubject;
   }
 

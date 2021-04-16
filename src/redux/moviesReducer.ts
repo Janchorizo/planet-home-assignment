@@ -5,12 +5,18 @@ import {
   SET_RATED_PAGE,
   SET_RATED
 } from './moviesActions';
+import { Movie } from 'src/app/shared/types';
 
 
-const initialState: object = {
+const initialState: {
+  ratedMovies: Movie[],
+  ratedPage: number,
+  unratedMovies: Movie[],
+  unratedPage: number
+} = {
   ratedMovies: [],
   ratedPage: 0,
-  unreatedMovies: [],
+  unratedMovies: [],
   unratedPage: 0
 };
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/shared/user.service';
 import { MoviesService } from 'src/app/shared/movies.service'
+import { Movie } from 'src/app/shared/types';
 
 @Component({
   selector: 'app-movies-page',
@@ -12,8 +13,8 @@ export class MoviesPageComponent implements OnInit {
     focused = false;
     transitioned = false;
     altBgColor = 'white';
-    ratedMovies: object;
-    unratedMovies: object;
+    ratedMovies: {page: number, movies: Movie[]};
+    unratedMovies: {page: number, movies: Movie[]};
 
     constructor(
       private userService: UserService,
