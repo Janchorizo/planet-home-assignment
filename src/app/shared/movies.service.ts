@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { DataService } from './data.service';
-import { User, Movie } from './types';
+import { User, Movie, Rating } from './types';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -19,6 +19,7 @@ export class MoviesService {
     this.dataService.getUser().subscribe(
       (user: User) => { this.user = user; }
     );
+    this.fetchRatings();
   }
 
   getRatedMovies(): BehaviorSubject<{page: number, movies: Movie[]}> {
@@ -27,6 +28,10 @@ export class MoviesService {
 
   getUnratedMovies(): BehaviorSubject<{page: number, movies: Movie[]}> {
     return this.dataService.getUnratedMovies();
+  }
+
+  getRatings(): BehaviorSubject<Map<string, Rating[]>> {
+    return this.dataService.ratingsSubject;
   }
 
   fetchRatedMoviesPage(page: number) {
@@ -60,4 +65,55 @@ export class MoviesService {
       }
     );
   }
+
+  rateMovie(movieId: string, score: number) {
+    this.apiService.hit(
+      'rateMovie',
+      {movieId},
+      null,
+      {score},
+      this.user?.token
+    ).subscribe(
+      response => {
+        if (response.status === 200) {
+          this.fetchRatings();
+        }
+      }
+    );
+  }
+
+  updateRating(movieId: string, score: number) {
+    this.apiService.hit(
+      'updateRating',
+      {movieId},
+      null,
+      {score},
+      this.user?.token
+    ).subscribe(
+      response => {
+        if (response.status === 200) {
+          this.fetchRatings() // We cannot suppose that there is a valid mapping
+        }
+      }
+    );
+  }
+
+  fetchRatings() {
+    this.apiService.hit(
+      'getRatings',
+      null,
+      null,
+      null,
+      this.user?.token
+    ).subscribe(
+      response => {
+        if (response.status === 200) {
+          const ratingMap: Map<string, Rating[]> = 
+            new Map(response.body.map(d => [d.movie_id, d]));
+          this.dataService.setRatings(ratingMap);
+        }
+      }
+    );
+  }
+
 }
