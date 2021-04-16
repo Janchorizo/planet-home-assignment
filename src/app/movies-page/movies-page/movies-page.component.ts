@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/shared/user.service';
+import { MoviesService } from 'src/app/shared/movies.service'
 
 @Component({
   selector: 'app-movies-page',
@@ -11,13 +12,25 @@ export class MoviesPageComponent implements OnInit {
     focused = false;
     transitioned = false;
     altBgColor = 'white';
-    router: Router;
-  
-    constructor(private userService: UserService, router: Router){
-      this.router = router;
+    ratedMovies: object;
+    unratedMovies: object;
+
+    constructor(
+      private userService: UserService,
+      private moviesService: MoviesService,
+      private router: Router){
+        this.moviesService.getRatedMovies().subscribe(
+          movies => { this.ratedMovies = movies; }
+        );
+
+        this.moviesService.getUnratedMovies().subscribe(
+          movies => { this.unratedMovies = movies; }
+        );
     }
   
     ngOnInit(): void {
+      this.moviesService.fetchRatedMoviesPage(0);
+      this.moviesService.fetchUnratedMoviesPage(0);
     }
   
     handleMouseEnter(){
@@ -49,7 +62,6 @@ export class MoviesPageComponent implements OnInit {
         this.transitioned = true;
         setTimeout(() => {
           this.userService.logout();
-          this.router.navigate(['/']);
         }, 600);
     }
 
