@@ -13,7 +13,8 @@ export class ButtonComponent implements OnInit {
   ngOnInit(): void {
   }
 
-	handleClick() {
+	handleClick(event) {
+        event.preventDefault();
 		this.clickEvent.emit(null);
 	}
 }
