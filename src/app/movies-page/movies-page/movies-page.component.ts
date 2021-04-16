@@ -68,6 +68,7 @@ export class MoviesPageComponent implements OnInit {
         this.transitioned = true;
         setTimeout(() => {
           this.userService.logout();
+          this.router.navigate(['']);
         }, 600);
     }
 
