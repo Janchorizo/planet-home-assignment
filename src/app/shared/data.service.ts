@@ -22,6 +22,14 @@ export class DataService {
     this.appStore = appStore;
     const initialState = this.appStore.getState();
     this.userSubject = new BehaviorSubject(initialState.user);
+    this.ratedMoviesSubject = new BehaviorSubject({
+      page: initialState.movies.ratedPage,
+      movies: initialState.movies.ratedPage
+    });
+    this.unratedMoviesSubject = new BehaviorSubject({
+      page: initialState.movies.unratedPage,
+      movies: initialState.movies.unratedPage
+    });
 
     this.unsubscribeStore = this.appStore.subscribe(
       this.handleStoreUpdate.bind(this));
