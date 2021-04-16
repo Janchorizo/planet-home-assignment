@@ -26,14 +26,18 @@
                     <p>
                         A large collection of unrated movies for you to discover.
                     </p>
+                    <shared-button>See previous page</shared-button>
+                    <shared-button>See next page</shared-button>
                 </div>
                 <movie *ngFor='let movie of unratedMovies.movies' [movie]='movie'></movie>
             </div>
         </section>
         <section>
             <h2>
-                Already seen movies
+                Your rated movies
             </h2>
+            <shared-button>See previous page</shared-button>
+                    <shared-button>See next page</shared-button>
             <div>
             </div>
         </section>
