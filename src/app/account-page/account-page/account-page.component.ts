@@ -19,17 +19,41 @@ export class AccountPageComponent implements OnInit {
   }
 
   onCLick() {
-      this.transitioned = true;
-      setTimeout(() => {
-        this.router.navigate(['/app/movies']);
-      }, 600);
+    this.transitioned = true;
+    setTimeout(() => {
+      this.router.navigate(['/app/movies']);
+    }, 600);
   }
 
   handleMouseEnter(){
-      this.focused = true;
+    this.focused = true;
   }
 
   handleMouseExit(){
     this.focused = false;
+  }
+
+  handleFirstNameChange(newValue) {
+
+  }
+
+  handleLastNameChange(newValue) {
+    
+  }
+
+  handleEmailChange(newValue) {
+      
+  }
+
+  handlePasswordChange(newValue) {
+      
+  }
+
+  handlePasswordChangeClick() {
+      
+  }
+
+  handleDeleteAccountClick() {
+      
   }
 }

@@ -18,10 +18,21 @@
             <p>
                 Change your personal information and how you<br> access the application.
             </p>
-            <shared-undoable-input [label]='"First name"' [placeholder]='"..."'></shared-undoable-input>
-            <shared-undoable-input [label]='"Last name"' [placeholder]='"..."'></shared-undoable-input>
-            <shared-undoable-input [label]='"Email"' [placeholder]='"x@y.z"'></shared-undoable-input>
-            
+            <shared-undoable-input
+              (onChange)='handleFirstNameChange($event)'
+              [label]='"First name"'
+              [placeholder]='"..."'>
+            </shared-undoable-input>
+            <shared-undoable-input
+              (onChange)='handleLastNameChange($event)'
+              [label]='"Last name"'
+              [placeholder]='"..."'>
+            </shared-undoable-input>
+            <shared-undoable-input
+              (onChange)='handleEmailChange($event)'
+              [label]='"Email"'
+              [placeholder]='"x@y.z"'>
+            </shared-undoable-input>
         </shared-container>
         <shared-container [id]='"danger-settings"' [bgColor]='"#f3f3f3"' [rounded]='true'>
             <h2>Danger zone</h2>
@@ -38,8 +49,12 @@
                     the new one the next time you login.
                 </i>
                 <form>
-                    <shared-input [type]='"password"' [label]='"Password"' [placeholder]='"xxxx"'></shared-input>
-                    <shared-button>
+                    <shared-input
+                      [type]='"password"'
+                      [label]='"Password"'
+                      [placeholder]='"xxxx"'>
+                    </shared-input>
+                    <shared-button (clickEvent)='handlePasswordChangeClick()'>
                         Change the password
                     </shared-button>
                 </form>
@@ -51,7 +66,7 @@
                     Your account will be permanently deleted and you will be
                     sent to the home screen.
                 </i><br/>
-                <shared-button>
+                <shared-button (clickEvent)='handleDeleteAccountClick()'>
                     Delete account
                 </shared-button>
             </div>
