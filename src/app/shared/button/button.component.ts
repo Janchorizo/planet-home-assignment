@@ -14,7 +14,7 @@ export class ButtonComponent implements OnInit {
   }
 
 	handleClick(event) {
-        event.preventDefault();
+    event.preventDefault();
 		this.clickEvent.emit(null);
 	}
 }
