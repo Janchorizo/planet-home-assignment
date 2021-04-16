@@ -31,7 +31,7 @@
                         <shared-button *ngIf='unratedMovies.page > 1' (clickEvent)='handlePrevUnratedMoviesPage()'>
                             See previous page
                         </shared-button>
-                        <shared-button *ngIf='unratedMovies.movies.length > 0' (clickEvent)='handleNextUnratedMoviesPage()'>
+                        <shared-button *ngIf='unratedMovies.movies?.length > 0' (clickEvent)='handleNextUnratedMoviesPage()'>
                             See next page
                         </shared-button>
                     </nav>
@@ -51,7 +51,7 @@
                 <shared-button *ngIf='ratedMovies.page > 1' (clickEvent)='handlePrevRatedMoviesPage()'>
                     See previous page
                 </shared-button>
-                <shared-button *ngIf='ratedMovies.movies.length > 0' (clickEvent)='handleNextRatedMoviesPage()'>
+                <shared-button *ngIf='ratedMovies.movies?.length > 0' (clickEvent)='handleNextRatedMoviesPage()'>
                     See next page
                 </shared-button>
             </nav>
