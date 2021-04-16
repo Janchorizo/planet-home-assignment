@@ -35,3 +35,9 @@ export interface Movie {
   url: string,
   poster_url: string
 }
+
+export interface Rating {
+  id: string;
+  movie_id: string;
+  score: number;
+}
