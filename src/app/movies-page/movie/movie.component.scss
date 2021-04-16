@@ -65,6 +65,34 @@
 .rating{
     span.ratingButton{
         cursor: pointer;
+        color: darkgrey;
         &:hover{color: gold};
+    }
+
+    span.ratingButton:nth-child(1){
+        color: #5545ba;
+    }
+    span.ratingButton:nth-child(2){
+        color: #5545ba;
+        &.rating-1{color: darkgrey;}
+    }
+    span.ratingButton:nth-child(3){
+        color: #5545ba;
+        &.rating-1{color: darkgrey;}
+        &.rating-2{color: darkgrey;}
+    }
+    span.ratingButton:nth-child(4){
+        &.rating-4{color: #5545ba;}
+        &.rating-5{color: #5545ba;}
+    }
+    span.ratingButton:nth-child(5){
+        &.rating-5{color: #5545ba;}   
+    }
+
+    span.ratingButton{
+        cursor: pointer;
+        color: darkgrey;
+        &.rating-null{color: darkgrey;}
+        &:hover{color: gold!important};
     }
 }

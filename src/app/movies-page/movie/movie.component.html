@@ -6,11 +6,11 @@
         <span class="year">({{ movie.year }})</span>
       </div>
       <div class="rating">
-        <span class='ratingButton' (click)='handleRating(1)'>★</span>
-        <span class='ratingButton' (click)='handleRating(2)'>★</span>
-        <span class='ratingButton' (click)='handleRating(3)'>★</span>
-        <span class='ratingButton' (click)='handleRating(4)'>★</span>
-        <span class='ratingButton' (click)='handleRating(5)'>★</span>
+        <span [class]='["ratingButton", "rating-"+rating]' (click)='handleRating(1)'>★</span>
+        <span [class]='["ratingButton", "rating-"+rating]' (click)='handleRating(2)'>★</span>
+        <span [class]='["ratingButton", "rating-"+rating]' (click)='handleRating(3)'>★</span>
+        <span [class]='["ratingButton", "rating-"+rating]' (click)='handleRating(4)'>★</span>
+        <span [class]='["ratingButton", "rating-"+rating]' (click)='handleRating(5)'>★</span>
       </div>
     </div>
     <div class="content">
