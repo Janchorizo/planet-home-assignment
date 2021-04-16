@@ -21,7 +21,7 @@ export class UserService {
       );
   }
 
-  isLoggedIn(){
+  isLoggedIn(): boolean{
     return this.user !== null;
   }
 

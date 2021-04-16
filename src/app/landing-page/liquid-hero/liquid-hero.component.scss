@@ -1,0 +1,28 @@
+@use '../../../styles.scss';
+
+#liquid-hero{
+    display: flex;
+    height: calc(100% - 80px);
+    margin-left: styles.$space-large;
+    margin-bottom: styles.$space-large;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+
+    img{
+        height: 300px;
+        margin-bottom: -20px;
+        margin-left: 100px;
+    }
+
+    h1, p{
+        font-family: styles.$text-serif;
+    }
+
+    h1{
+        font-size: styles.$text-large * 2;
+    }
+    p{
+        font-size: styles.$text-large;
+    }
+}

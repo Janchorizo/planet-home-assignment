@@ -1,0 +1,35 @@
+<div id='user-access'>
+    <div class='userAccessRoundedContainer'>
+        <div class='go'>
+            <span>Go to the app</span>
+            <hr/>
+        </div>
+        <div *ngIf='loggedIn === false'>
+            <div id='toggle'>
+                <span [class]='{active: !registrating}' (click)='setRegistrating(false)'>Login</span>
+                /
+                <span [class]='{active: registrating}' (click)='setRegistrating(true)'>Register</span>
+            </div>
+            <div *ngIf='registrating === false' id='login-form'>
+                <form>
+                    <shared-input [initialValue]='loginEmail' (onChange)='handleChange("loginEmail", $event)' [label]='"Email"' [placeholder]='"x@y.z"'></shared-input>
+                    <shared-input [initialValue]='loginPassword' (onChange)='handleChange("loginPassword", $event)' [type]='"password"' [label]='"Password"' [placeholder]='"xxxx"'></shared-input>
+                    <shared-button (clickEvent)='handleLoginClick()'>Login</shared-button>
+                </form>
+            </div>
+            <div *ngIf='registrating === true' id='registration-form'>
+                <form>
+                    <shared-input [initialValue]='registrationFirstName' (onChange)='handleChange("registrationFirstName", $event)' [label]='"First name"' [placeholder]='"..."'></shared-input>
+                    <shared-input [initialValue]='registrationLastName' (onChange)='handleChange("registrationLastName", $event)' [label]='"Last name"' [placeholder]='"..."'></shared-input>
+                    <shared-input [initialValue]='registrationEmail' (onChange)='handleChange("registrationEmail", $event)' [label]='"Email"' [placeholder]='"x@y.z"'></shared-input>
+                    <shared-input [initialValue]='registrationPassword' (onChange)='handleChange("registrationPassword", $event)' [type]='"password"' [label]='"Password"' [placeholder]='"xxxx"'></shared-input>
+                    <shared-button (clickEvent)='handleRegistrateClick()'>Registrate and login</shared-button>
+                </form>
+            </div>
+        </div>
+        <div *ngIf='loggedIn === true' id='goToApp' class='go'>
+            <span (click)='handleGoClick()'>Go to the app</span>
+            <hr/>
+        </div>
+    </div>
+</div>
