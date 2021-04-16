@@ -23,10 +23,8 @@
             <h2>
                 Have a look at these new movies
             </h2>
-            <div>
-                <p *ngFor='let movie of unratedMovies.movies'>
-                    {{ movie.title }}
-                </p>
+            <div class='movieFlexContainer'>
+                <movie *ngFor='let movie of unratedMovies.movies'></movie>
             </div>
         </section>
         <section>
