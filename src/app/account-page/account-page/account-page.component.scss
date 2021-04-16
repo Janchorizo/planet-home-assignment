@@ -1,7 +1,59 @@
+@use '../../../styles.scss';
+
 #back-link{
     color: white;
     position: absolute;
     cursor: pointer;
     top: 10px;
     left: 40px;
+}
+
+::ng-deep #account-settings{
+    display: flex;
+    max-width: 900px;
+    justify-content: space-between;
+
+    h1, h2, p{
+        color: styles.$dark;
+    }
+    h1{
+        font-family: styles.$text-serif;
+    }
+
+    #account-settings-details{
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+    
+    #danger-settings{
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        padding-top: styles.$space-large;
+        padding-bottom: styles.$space-large;
+
+        h2{
+            margin-top: 0;
+            color: #ab654b;
+        }
+        
+        hr{
+            margin: styles.$space-large 0;
+            height: 2px;
+            display: block;
+            width: 100%;
+            border: none;
+            background-color: lightgray;
+        }
+
+        i{
+            color: lightslategrey;
+            padding-bottom: styles.$space-small;
+        }
+
+        div:last-of-type button{
+            margin-top: styles.$space-small;
+        }
+    }
 }

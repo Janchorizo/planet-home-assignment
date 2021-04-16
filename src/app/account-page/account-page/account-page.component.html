@@ -12,26 +12,27 @@
         Go back to movies
     </span>
 
-    <shared-container id='account-settings'>
-        <h1>Account settings</h1>
-        <p>
-            Change your personal information and how you access the application.
-        </p>
-        <shared-container>
-            <shared-input [label]='"First name"' [placeholder]='"..."'></shared-input>
-            <shared-input [label]='"Last name"' [placeholder]='"..."'></shared-input>
-            <shared-input [label]='"Email"' [placeholder]='"x@y.z"'></shared-input>
+    <shared-container [id]='"account-settings"'>
+        <shared-container [id]='"account-settings-details"'>
+            <h1>Account settings</h1>
+            <p>
+                Change your personal information and how you<br> access the application.
+            </p>
+            <shared-undoable-input [label]='"First name"' [placeholder]='"..."'></shared-undoable-input>
+            <shared-undoable-input [label]='"Last name"' [placeholder]='"..."'></shared-undoable-input>
+            <shared-undoable-input [label]='"Email"' [placeholder]='"x@y.z"'></shared-undoable-input>
             
         </shared-container>
-        <shared-container id='danger-settings' [bgColor]='"#f3f3f3"' [rounded]='true'>
+        <shared-container [id]='"danger-settings"' [bgColor]='"#f3f3f3"' [rounded]='true'>
             <h2>Danger zone</h2>
             <p>
                 These actions are irreversible and can lead to
                 unintentionally loose access to your account. Be
                 careful about proceeding.
             </p>
+            <hr/>
             <div>
-                Change the existing password.
+                Change the existing password.<br/>
                 <i>
                     You will need to provide
                     the new one the next time you login.
@@ -43,9 +44,17 @@
                     </shared-button>
                 </form>
             </div>
-            <shared-button>
-                Delete account
-            </shared-button>
+            <hr/>
+            <div>
+                Delete the account.<br/>
+                <i>
+                    Your account will be permanently deleted and you will be
+                    sent to the home screen.
+                </i><br/>
+                <shared-button>
+                    Delete account
+                </shared-button>
+            </div>
         </shared-container>
     </shared-container>
 </shared-page-container>
