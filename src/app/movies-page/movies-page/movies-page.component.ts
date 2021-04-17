@@ -102,8 +102,10 @@ export class MoviesPageComponent implements OnInit {
 
     handleRateCreation(movieId: string, score: number) {
       this.moviesService.rateMovie(movieId, score);
-      this.moviesService.fetchUnratedMoviesPage(this.unratedMovies.page);
-      this.moviesService.fetchRatedMoviesPage(this.ratedMovies.page);
+      setTimeout(() => {
+          this.moviesService.fetchUnratedMoviesPage(this.unratedMovies.page);
+          this.moviesService.fetchRatedMoviesPage(this.ratedMovies.page);
+      }, 500);
     }
 
     handleRateUpdate(movieId: string, score: number) {
@@ -111,6 +113,8 @@ export class MoviesPageComponent implements OnInit {
 
       const rating = this.ratings.get(movieId);
       this.moviesService.updateRating(rating.id, score);
-      this.moviesService.fetchRatedMoviesPage(this.ratedMovies.page);
+      setTimeout(() => {
+          this.moviesService.fetchRatedMoviesPage(this.ratedMovies.page);
+      }, 500);
     }
 }
